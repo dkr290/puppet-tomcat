@@ -12,18 +12,16 @@ class tomcat::install(
 
 include '::archive'
 
-case $facts['os']['family'] {
-           'Debian': {
+if $facts['os']['family'] == 'Debian' {
+           
   package {'iptables-persistent':
                 ensure => 'installed',
               }
            }
-           default:{
-             notify { 'does not install iptables-persistent':
-               message => "Not installing anything",
-             }
-           }
-}
+           
+           
+           
+
 
   file { $install_path:
   ensure => directory,
