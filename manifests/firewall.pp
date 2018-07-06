@@ -5,6 +5,8 @@ String  $proto = 'tcp',
 String $action = 'accept',
 String $ensure  = 'present',
 String $zone    = 'public',
+Integer $port   = 80,
+String $protocol = 'tcp',
 
 
 
@@ -33,8 +35,8 @@ case $facts['os']['family'] {
                            firewalld_port { "${name}":
                              ensure   => $ensure,
                              zone     => $zone,
-                             port     => $dport,
-                            protocol => $proto,
+                             port     => $port,
+                            protocol => $protocol,
                          }
                  
                       }
