@@ -14,14 +14,14 @@
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
+This is the module that installs tomcat.
 
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+It depends on the following modules
+
+puppetlabs/firewall
+crayfishx/firewalld
+puppet/archive
+
 
 ## Setup
 
