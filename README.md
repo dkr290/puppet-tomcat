@@ -27,10 +27,10 @@ puppet/archive
 Hiera sample for node1 which is Debian. Hiera file is used for firewall rules
 
 data/node1.yaml Debian server
-    ---
-    profile::tomcat::rules:
-    - 'name': '80 port'
-      'proto': 'tcp'
+    ---<br />
+    profile::tomcat::rules:<br />
+    - 'name': '80 port'<br />
+      'proto': 'tcp'<br />
       'dport':  80
       'action': 'accept'
     - 'name': '8080 port'
