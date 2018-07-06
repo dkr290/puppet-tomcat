@@ -26,28 +26,28 @@ puppet/archive
 ## Setup
 Hiera sample for node1 which is Debian. Hiera file is used for firewall rules
 
-data/node1.yaml Debian server
+###data/node1.yaml Debian server<br />
     ---<br />
     profile::tomcat::rules:<br />
     - 'name': '80 port'<br />
       'proto': 'tcp'<br />
-      'dport':  80
-      'action': 'accept'
-    - 'name': '8080 port'
-      'proto': 'tcp'
-      'dport':  8080
-      'action': 'accept'
-###data/node2.yaml
+      'dport':  80<br />
+      'action': 'accept'<br />
+    - 'name': '8080 port'<br />
+      'proto': 'tcp'<br />
+      'dport':  8080<br />
+      'action': 'accept'<br />
+###data/node2.yaml<br />
 ###Centos server
 
 
----
-profile::tomcat::rules:
- - 'name': 'Open port 8080 in the public zone'
-   'ensure': 'present'
-   'zone': 'public'
-   'port': 8080
-   'protocol': 'tcp'
+---<br />
+profile::tomcat::rules:<br />
+ - 'name': 'Open port 8080 in the public zone'<br />
+   'ensure': 'present'<br />
+   'zone': 'public'<br />
+   'port': 8080<br />
+   'protocol': 'tcp'<br />
 
 ####This is the sample profile module. The file can be called tomcat.pp
 The rules from hierra are going to $rules array and then depending on the OS they are implemented
