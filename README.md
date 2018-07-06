@@ -30,18 +30,18 @@ Hiera sample for node1 which is Debian. Hiera file is used for firewall rules
     ---<br />
     profile::tomcat::rules:<br />
     - 'name': '80 port'<br />
-        'proto': 'tcp'<br />
-        'dport':  80<br />
-        'action': 'accept'<br />
+      'proto': 'tcp'<br />
+      'dport':  80<br />
+      'action': 'accept'<br />
     - 'name': '8080 port'<br />
-        'proto': 'tcp'<br />
-        'dport':  8080<br />
-        'action': 'accept'<br />
+      'proto': 'tcp'<br />
+      'dport':  8080<br />
+      'action': 'accept'<br />
 ###data/node2.yaml<br />
 ###Centos server
 
 
----<br />
+   ---<br />
    profile::tomcat::rules:<br />
    - 'name': 'Open port 8080 in the public zone'<br />
      'ensure': 'present'<br />
