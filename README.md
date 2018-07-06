@@ -24,6 +24,81 @@ puppet/archive
 
 
 ## Setup
+Hiera sample for node1 which is Debian. Hiera file is used for firewall rules
+
+data/node1.yaml Debian server
+---
+profile::tomcat::rules:
+ - 'name': '80 port'
+   'proto': 'tcp'
+   'dport':  80
+   'action': 'accept'
+ - 'name': '8080 port'
+   'proto': 'tcp'
+   'dport':  8080
+   'action': 'accept'
+data/node2.yaml
+Centos server
+
+
+---
+profile::tomcat::rules:
+ - 'name': 'Open port 8080 in the public zone'
+   'ensure': 'present'
+   'zone': 'public'
+   'port': 8080
+   'protocol': 'tcp'
+
+####This is the sample profile module. The file can be called tomcat.pp
+The rules from hierra are going to $rules array and then depending on the OS they are implemented
+
+class profile::tomcat(
+
+  Array $rules,
+
+){
+  include ::java
+  include ::tomcat
+
+
+case $facts['os']['family'] {
+           'Debian': {
+  $rules.each |$rule| {
+
+     ::tomcat::firewall {$rule['name']:
+          dport => $rule['dport'],
+          proto => $rule['proto'],
+          action => $rule['action'],
+
+     }
+
+   }
+ }
+'RedHat', 'CentOS': {
+
+
+ $rules.each  |$f| {
+
+   ::tomcat::firewall {$f['name']:
+
+          ensure => $f['ensure'],
+          zone  =>  $f['zone'],
+          port  =>  $f['port'],
+          protocol => $f['protocol'],
+
+      }
+
+ }
+}
+
+
+
+
+    }
+
+ }
+
+
 
 ### What tomcat affects **OPTIONAL**
 
