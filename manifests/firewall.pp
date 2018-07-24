@@ -37,6 +37,11 @@ case $facts['os']['family'] {
                              zone     => $zone,
                              port     => $port,
                             protocol => $protocol,
+                            notify   => Service['firewalld'],
+                         }
+                         service { 'firewalld':
+                               hasrestart => true,
+                               
                          }
                  
                       }
