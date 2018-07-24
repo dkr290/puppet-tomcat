@@ -7,6 +7,7 @@ String $ensure  = 'present',
 String $zone    = 'public',
 Integer $port   = 80,
 String $protocol = 'tcp',
+String $firewalld = 'firewalld',
 
 
 
@@ -37,9 +38,9 @@ case $facts['os']['family'] {
                              zone     => $zone,
                              port     => $port,
                             protocol => $protocol,
-                            notify   => Service['firewalld'],
+                            notify   => Service["${firewalld}"],
                          }
-                         service { 'firewalld':
+                         service { "${firewalld}":
                                hasrestart => true,
                                
                          }
